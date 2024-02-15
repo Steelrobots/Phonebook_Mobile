@@ -34,4 +34,5 @@ const styles = StyleSheet.create({
         position:'relative',
         padding:5,
     }
+    
 })

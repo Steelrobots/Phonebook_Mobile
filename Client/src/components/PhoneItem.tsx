@@ -1,25 +1,31 @@
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function PhoneItem() {
     const [isEdit, setIsEdit] = useState(false);
 
 
     return (
-        <view>
-            <view>
+        <View>
+            <View>
 
-            </view>
-            <view>
-                <text>Andri Priyadi</text>
-                <text>089695991757</text>
+            </View>
+            <View>
+                <Text>Andri Priyadi</Text>
+                <Text>089695991757</Text>
                 <view>
                     <TouchableOpacity><FontAwesomeIcon icon={faPenToSquare} /></TouchableOpacity>
                     <TouchableOpacity><FontAwesomeIcon icon={faTrashCan} /></TouchableOpacity>
                 </view>
-            </view>
-        </view>
+            </View>
+        </View>
     )
 };
+
+const  styles = StyleSheet.create({
+    container:{
+        
+    }
+})

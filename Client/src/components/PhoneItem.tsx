@@ -15,10 +15,10 @@ export default function PhoneItem() {
             <View>
                 <Text>Andri Priyadi</Text>
                 <Text>089695991757</Text>
-                <view>
+                <View>
                     <TouchableOpacity><FontAwesomeIcon icon={faPenToSquare} /></TouchableOpacity>
                     <TouchableOpacity><FontAwesomeIcon icon={faTrashCan} /></TouchableOpacity>
-                </view>
+                </View>
             </View>
         </View>
     )

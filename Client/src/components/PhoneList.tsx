@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FlatList, View } from "react-native";
+import PhoneItem from "./PhoneItem";
 
 export default function PhoneList({
     keyword,
@@ -12,6 +13,7 @@ const [isLoading,setIsLoading ] = useState(false)
 
 return(
     <View>
+        <PhoneItem/>
     </View>
 )
 }

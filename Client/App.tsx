@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { NavigationContainer } from '@react-navigation/native';
 import PhoneBox from './src/components/PhoneBox';
+import PhoneAdd from './src/components/PhoneAdd';
 
 const Stack = createNativeStackNavigator()
 
@@ -19,7 +20,8 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="home" component={PhoneBox} />
+          <Stack.Screen name="Home" component={PhoneBox} />
+          <Stack.Screen name="Add" component={PhoneAdd} />
         </Stack.Navigator>
       </NavigationContainer>
 

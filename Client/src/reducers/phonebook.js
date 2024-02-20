@@ -131,6 +131,9 @@ export const selectPhonebooks = (state) => {
     return state.contacts
 }
 
+export const readData = async () =>{
+}
+
 export const { resetContacts } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

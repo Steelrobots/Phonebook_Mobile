@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { KeyboardAvoidingView, TextInput, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function PhoneAdd() {
     const [add, setAdd] = useState({ name: '', phone: '' })
@@ -13,9 +13,8 @@ export default function PhoneAdd() {
                 <TextInput  placeholder="insert your phone" onChangeText={text => { setAdd({ ...add, phone: text }) }}/>
             </View>
             <View>
-                <TouchableOpacity>Save</TouchableOpacity>
-                <TouchableOpacity  onPress={()=> nav.navigate('Home')}>Cancel
-          </TouchableOpacity>
+                <TouchableOpacity><Text>Save</Text></TouchableOpacity>
+                <TouchableOpacity  onPress={()=> nav.navigate('Home')}><Text>Cancel</Text></TouchableOpacity>
 
             </View>
         </KeyboardAvoidingView>

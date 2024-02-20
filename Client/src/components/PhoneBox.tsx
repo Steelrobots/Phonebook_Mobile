@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import SearchBar from "./SearchBar";
 import PhoneList from "./PhoneList";
 
@@ -8,7 +8,7 @@ export default function PhoneBox({navigation}:any) {
     const [sort, setSort] = useState('asc')
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={css.container}> 
             <SearchBar
                 sort={sort}
                 setSort={setSort}
@@ -20,3 +20,11 @@ export default function PhoneBox({navigation}:any) {
     )
 
 }
+const css = StyleSheet.create({
+    container:{
+        width: '100%',
+        height:'100%',
+        flex: 1,
+        backgroundColor: 'white'
+    }
+})

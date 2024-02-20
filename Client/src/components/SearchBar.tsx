@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         position: 'relative',
         padding: 5,
+    },
+    btn:{
+
     }
 
 })

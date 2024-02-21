@@ -19,7 +19,7 @@ export default function SearchBar(
             {sort === 'asc' ? (<TouchableOpacity onPress={() => { setSort('desc'); }} style={styles.btn}><FontAwesomeIcon icon={faArrowUpAZ} /></TouchableOpacity>) :
                 (<TouchableOpacity onPress={() => { setSort('asc'); }} style={styles.btn} ><FontAwesomeIcon icon={faArrowDownAZ} /></TouchableOpacity>)}
             <View>
-                <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search" />
+                <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search" /> 
             </View>
             <TouchableOpacity onPress={() => nav.navigate('Add')}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
 

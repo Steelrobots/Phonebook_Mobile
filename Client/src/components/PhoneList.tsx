@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 import PhoneItem from "./PhoneItem";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPhonebooks } from "../reducers/phonebook";
+import { readData, selectPhonebooks } from "../reducers/phonebook";
 import { loadPhonebooks } from "../reducers/API";
 
 export default function PhoneList({ keyword, sort, }:
@@ -10,12 +10,26 @@ export default function PhoneList({ keyword, sort, }:
         keyword: string;
         sort: string;
     }) {
-    const dispatch = useDispatch()
+    const dispatch: any = useDispatch()
     const { phonebooks, page, pages } = useSelector(selectPhonebooks)
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                readData()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        loadData()
+    }, [keyword, sort])
+    console.log(phonebooks)
     return (
         <View>
-            <PhoneItem />
+            <FlatList
+                data={phonebooks}
+                renderItem={({ item }: { item: any }) => <PhoneItem user={item} />} />
         </View>
     )
 }

@@ -1,6 +1,8 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 import { loadPhonebooks, loadPage, addPhonebooks, deletePhonebooks, updateData, updateAvatar } from './API';
+import { useDispatch } from 'react-redux';
 
+const dispatch = useDispatch()
 
 const initialState = {
     phonebooks: [],
@@ -67,10 +69,10 @@ const contactsSlice = createSlice({
                         {
                             id: action.payload.id,
                             name: action.payload.name,
-                            phone:   action.payload.phone
-                         }, ...state.phonebooks.filter(data => data.id !== action.payload.id)], status: 'succeeded'
+                            phone: action.payload.phone
+                        }, ...state.phonebooks.filter(data => data.id !== action.payload.id)], status: 'succeeded'
                 }
-                console.log( 'ini add',state)
+                console.log('ini add', state)
                 return state
 
             })
@@ -131,7 +133,8 @@ export const selectPhonebooks = (state) => {
     return state.contacts
 }
 
-export const readData = async () =>{
+export const readData = async ({keyword ,sort}) => (dispatch) =>{
+    dispatch(loadPhonebooks({keyword,sort}))
 }
 
 export const { resetContacts } = contactsSlice.actions;

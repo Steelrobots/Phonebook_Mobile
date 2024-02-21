@@ -11,16 +11,17 @@ export default function SearchBar(
             sort: string, setSort: React.Dispatch<React.SetStateAction<string>>,
             keyword: string, setKeyword: React.Dispatch<React.SetStateAction<string>>
         }) {
-    const nav:any = useNavigation();
+    const nav: any = useNavigation();
+
 
     return (
         <KeyboardAvoidingView style={styles.container}  >
-            {sort === 'asc' ? (<TouchableOpacity onPress={() => { setSort('desc'); }}><FontAwesomeIcon icon={faArrowUpAZ} /></TouchableOpacity>) :
-                (<TouchableOpacity onPress={() => { setSort('asc'); }} ><FontAwesomeIcon icon={faArrowDownAZ} /></TouchableOpacity>)}
+            {sort === 'asc' ? (<TouchableOpacity onPress={() => { setSort('desc'); }} style={styles.btn}><FontAwesomeIcon icon={faArrowUpAZ} /></TouchableOpacity>) :
+                (<TouchableOpacity onPress={() => { setSort('asc'); }} style={styles.btn} ><FontAwesomeIcon icon={faArrowDownAZ} /></TouchableOpacity>)}
             <View>
                 <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search" />
             </View>
-            <TouchableOpacity  onPress={() => nav.navigate('Add')}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
+            <TouchableOpacity onPress={() => nav.navigate('Add')}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
 
         </KeyboardAvoidingView>
     )
@@ -36,7 +37,10 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     btn: {
-
+        backgroundColor: '#AF8210',
+        padding: 3,
+        borderColor: '#AF8210',
+        borderRadius: 4
     }
 
 })

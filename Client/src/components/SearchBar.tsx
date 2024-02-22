@@ -1,4 +1,4 @@
-import { faArrowDownAZ, faArrowUpAZ, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDownAZ, faArrowUpAZ, faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
@@ -19,6 +19,7 @@ export default function SearchBar(
             {sort === 'asc' ? (<TouchableOpacity onPress={() => { setSort('desc'); }} style={styles.btn}><FontAwesomeIcon icon={faArrowUpAZ} /></TouchableOpacity>) :
                 (<TouchableOpacity onPress={() => { setSort('asc'); }} style={styles.btn} ><FontAwesomeIcon icon={faArrowDownAZ} /></TouchableOpacity>)}
             <View>
+                <FontAwesomeIcon icon={faMagnifyingGlass}/>
                 <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search" /> 
             </View>
             <TouchableOpacity onPress={() => nav.navigate('Add')}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
@@ -41,6 +42,17 @@ const styles = StyleSheet.create({
         padding: 3,
         borderColor: '#AF8210',
         borderRadius: 4
+    },
+    submitContainer:{
+        width: '100%',
+        padding: 10
+    },
+    submit:{
+        borderColor: '#555',
+        width: '100%',
+        paddingLeft:30,
+        
     }
+
 
 })

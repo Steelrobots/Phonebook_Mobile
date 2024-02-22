@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { Alert, Image, ImageSourcePropType, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { deleteData, updatecontact } from "../reducers/phonebook";
 
 export default function PhoneItem({ user }: { user: any }) {
     const [isEdit, setIsEdit] = useState(false);
@@ -13,42 +14,50 @@ export default function PhoneItem({ user }: { user: any }) {
         uri: `http://192.168.1.51:3001/images/${user.avatar ? user.avatar : 'user-tie-solid.svg'}`
     };
 
-    const deleteAlert = ({user}: {user:any}) => {
+    const deleteAlert = ({ user }: { user: any }) => {
         Alert.alert(
             'Delete Confirmation', `Are you sure to delete this ${user.name} contact?`,
             [{
                 text: "Cancel",
                 onPress: () => nav.navigate('Home')
             },
-            { text: 'OK' }
+            {
+                text: 'OK',
+                onPress: () => deleteData(user.id)
+            }
             ]
         )
+    }
+    const handleData = ({ id, contact }: { id: number, contact: any }) => {
+        updatecontact({ id: user.id, contact: newData })
+        setIsEdit(false)
     }
 
 
 
     if (isEdit) {
-        return (<View>
-            <View>
-                <TouchableOpacity>
-                    <Image
-                        source={source}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View>
-                <TextInput value={user.name} onChangeText={text => setNewData({ ...newData, name: text })} />
-                <TextInput value={user.phone} onChangeText={text => setNewData({ ...newData, phone: text })} />
+        return (
+            <View style={styles.container}>
                 <View>
-                    <TouchableOpacity><FontAwesomeIcon icon={faFloppyDisk} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => setIsEdit(false)}><FontAwesomeIcon icon={faArrowRotateLeft} /></TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image
+                            source={source}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TextInput value={user.name} onChangeText={text => setNewData({ ...newData, name: text })} />
+                    <TextInput value={user.phone} onChangeText={text => setNewData({ ...newData, phone: text })} />
+                    <View>
+                        <TouchableOpacity onPress={()=> handleData(user.id)}><FontAwesomeIcon icon={faFloppyDisk} /></TouchableOpacity>
+                        <TouchableOpacity onPress={() => setIsEdit(false)}><FontAwesomeIcon icon={faArrowRotateLeft} /></TouchableOpacity>
+                    </View>
                 </View>
             </View>
-        </View>
         )
     } else {
         return (
-            <View key={user.id}>
+            <View key={user.id} style={styles.container}>
                 <View>
                     <TouchableOpacity>
                         <Image
@@ -61,7 +70,7 @@ export default function PhoneItem({ user }: { user: any }) {
                     <Text>{user.phone}</Text>
                     <View>
                         <TouchableOpacity onPress={() => setIsEdit(true)}><FontAwesomeIcon icon={faPenToSquare} /></TouchableOpacity>
-                        <TouchableOpacity onPress={() => deleteAlert({user})}><FontAwesomeIcon icon={faTrashCan} /></TouchableOpacity>
+                        <TouchableOpacity onPress={() => deleteAlert({ user })}><FontAwesomeIcon icon={faTrashCan} /></TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -71,6 +80,16 @@ export default function PhoneItem({ user }: { user: any }) {
 
 const styles = StyleSheet.create({
     container: {
-
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderRadius: 5,
+        width: '100%',
+        height: 'auto',
+        padding: 10,
+        marginTop: 10,
+        marginBottom: 10,
     }
 })

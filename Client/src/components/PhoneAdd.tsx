@@ -1,10 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { addData } from "../reducers/phonebook";
 
 export default function PhoneAdd() {
     const [add, setAdd] = useState({ name: '', phone: '' })
+    const [errorMessage, setErrorMessage] = useState('')
     const nav: any = useNavigation()
+
+    const handleData = () => {
+        if (add.name.length === 0 || add.phone.length === 0) return setErrorMessage("Please fill all fields")
+        else {
+            addData(add)
+            nav.navigate('Home')
+        }
+    }
 
     return (
         <KeyboardAvoidingView>

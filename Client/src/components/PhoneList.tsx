@@ -3,7 +3,6 @@ import { FlatList, View } from "react-native";
 import PhoneItem from "./PhoneItem";
 import { useDispatch, useSelector } from "react-redux";
 import { readData, selectPhonebooks } from "../reducers/phonebook";
-import { loadPhonebooks } from "../reducers/API";
 
 export default function PhoneList({ keyword, sort, }:
     {

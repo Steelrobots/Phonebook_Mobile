@@ -13,22 +13,23 @@ export default function PhoneList({ keyword, sort, }:
     const { phonebooks, page, pages } = useSelector(selectPhonebooks)
     const [isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                readData()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        loadData()
-    }, [keyword, sort])
-    console.log(phonebooks)
+    // useEffect(() => {
+    //     const loadData = async () => {
+    //         try {
+    //             readData()
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     loadData()
+    // }, [keyword, sort])
+    // console.log(phonebooks)
     return (
         <View>
-            <FlatList
+            {/* <FlatList
                 data={phonebooks}
-                renderItem={({ item }: { item: any }) => <PhoneItem user={item} />} />
+                renderItem={({ item }: { item: any }) => <PhoneItem user={item} />} /> */}
+                <PhoneItem/>
         </View>
     )
 }

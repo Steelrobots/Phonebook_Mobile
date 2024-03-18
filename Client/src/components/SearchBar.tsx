@@ -18,11 +18,11 @@ export default function SearchBar(
         <KeyboardAvoidingView style={styles.container}  >
             {sort === 'asc' ? (<TouchableOpacity onPress={() => { setSort('desc'); }} style={styles.btn}><FontAwesomeIcon icon={faArrowUpAZ} /></TouchableOpacity>) :
                 (<TouchableOpacity onPress={() => { setSort('asc'); }} style={styles.btn} ><FontAwesomeIcon icon={faArrowDownAZ} /></TouchableOpacity>)}
-            <View>
+            <View style={styles.submitContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search" /> 
+                <TextInput value={keyword} onChangeText={text => setKeyword(text)} placeholder="Search"  style={styles.submit}/> 
             </View>
-            <TouchableOpacity onPress={() => nav.navigate('Add')}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
+            <TouchableOpacity onPress={() => nav.navigate('Add')} style={styles.btn}><FontAwesomeIcon icon={faUserPlus} /></TouchableOpacity>
 
         </KeyboardAvoidingView>
     )

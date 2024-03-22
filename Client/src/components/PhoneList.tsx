@@ -9,8 +9,8 @@ export default function PhoneList({ keyword, sort, }:
         keyword: string;
         sort: string;
     }) {
-    const dispatch: any = useDispatch()
-    const { phonebooks, page, pages } = useSelector(selectPhonebooks)
+    // const dispatch: any = useDispatch()
+    // const { phonebooks, page, pages } = useSelector(selectPhonebooks)
     const [isLoading, setIsLoading] = useState(false)
 
     // useEffect(() => {

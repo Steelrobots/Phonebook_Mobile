@@ -136,21 +136,6 @@ export const selectPhonebooks = (state) => {
 export const readData = async ({keyword ,sort}) => (dispatch) =>{
     dispatch(loadPhonebooks({keyword,sort}))
 }
-export const scrollPage = async ({page  , keyword , sort})=>(dispatch)=>{
-    dispatch(loadPage({page,keyword,sort}))
-}
-export const addData = async (data) => (dispatch) =>{
-    dispatch(addPhonebooks(data))
-}
-export const updatecontact = async ({id, contact}) => (dispatch) =>{
-    dispatch(updateData({id,contact}))
-}
-export const deleteData = async ({id}) => (dispatch) =>{
-    dispatch(deletePhonebooks({id}))
-}
-export const updatePic= async ({id, formData}) =>(dispatch) =>{
-    dispatch(updateAvatar({id,formData}))
-}
 
 export const { resetContacts } = contactsSlice.actions;
 
